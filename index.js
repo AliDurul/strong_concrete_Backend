@@ -5,7 +5,6 @@ require("dotenv").config();
 const app = express();
 
 // ENV
-const BE_BASE_URL = process.env.BE_BASE_URL;
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;
 
