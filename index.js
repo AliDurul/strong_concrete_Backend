@@ -49,7 +49,7 @@ app.use(require("./src/routes"));
 app.use(require("./src/middlewares/errorHandler"));
 
 
-const server = app.listen(PORT, () => console.log(`Running on http://${HOST}:${PORT}`));
+const server = app.listen(PORT, () => console.log(`Running on http://${HOST}`));
 
 module.exports = server
 
