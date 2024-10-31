@@ -1,6 +1,6 @@
 "use strict";
 
-const {PurchaseAccount, Purchase, Material, Firm} = require('../models')
+const { PurchaseAccount, Purchase, Material, Firm } = require('../models')
 
 
 module.exports = {
@@ -43,9 +43,32 @@ module.exports = {
       { model: Firm, attributes: ["name"] },
     ]);
 
+
+    const groupedFirms = data.reduce((acc, item) => {
+      const firmName = item.Firm.name;
+
+      if (!acc[firmName]) {
+        acc[firmName] = {
+          items: [],
+          totalCredit: 0,
+          totalDebit: 0
+        };
+
+      }
+
+      acc[firmName].items.push(item);
+      acc[firmName].totalCredit += item.credit;
+      acc[firmName].totalDebit += item.debit;
+
+      return acc;
+    }, {});
+
+
+
+
     res.status(200).send({
       details: await req.getModelListDetails(PurchaseAccount),
-      data,
+      groupedFirms,
     });
   },
 
