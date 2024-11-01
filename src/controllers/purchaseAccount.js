@@ -44,19 +44,18 @@ module.exports = {
     ]);
 
 
-    const groupedFirms = data.reduce((acc, item) => {
+    const filteredData = data.reduce((acc, item) => {
       const firmName = item.Firm.name;
 
       if (!acc[firmName]) {
         acc[firmName] = {
-          items: [],
+          transactions: [],
           totalCredit: 0,
           totalDebit: 0
         };
-
       }
 
-      acc[firmName].items.push(item);
+      acc[firmName].transactions.push(item);
       acc[firmName].totalCredit += item.credit;
       acc[firmName].totalDebit += item.debit;
 
@@ -64,12 +63,12 @@ module.exports = {
     }, {});
 
 
+    const listPurchaseAccount = Object.keys(filteredData).map(firmName => ({
+      firmName,
+      ...filteredData[firmName]
+    }));
 
-
-    res.status(200).send({
-      details: await req.getModelListDetails(PurchaseAccount),
-      groupedFirms,
-    });
+    res.status(200).send(listPurchaseAccount);
   },
 
   create: async (req, res) => {
