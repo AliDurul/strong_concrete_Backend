@@ -83,7 +83,7 @@ module.exports = (req, res, next) => {
   //?url den gelen her değer string bu nedenle bu değerleri numberlaştırmam gerekiyor.page de yapmadım -1 zaten onu numberlaştırdı.backende page herzaman -1 dir.
 
   limit = Number(req.query?.limit);
-  limit = limit > 0 ? limit : Number(process.env?.PAGE_SIZE || 100);
+  limit = limit > 0 ? limit : Number(process.env?.PAGE_SIZE || 20);
 
   page = (page > 0 ? page : 1) - 1;
 

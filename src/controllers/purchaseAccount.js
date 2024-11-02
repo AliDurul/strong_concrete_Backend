@@ -69,6 +69,7 @@ module.exports = {
     }));
 
     res.status(200).send(listPurchaseAccount);
+    // res.status(200).send(data);
   },
 
   create: async (req, res) => {
