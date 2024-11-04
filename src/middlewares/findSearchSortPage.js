@@ -35,7 +35,7 @@ module.exports = (req, res, next) => {
 
   for (const key in search) {
     let value = search[key];
-    if (['model', 'DriverId', 'capacity', 'status', 'creatorId', 'role'].includes(key)) {
+    if (['model', 'DriverId', 'capacity', 'status', 'creatorId', 'role', 'FirmId'].includes(key)) {
       whereClause[key] = value;
     } else {
       whereClause[key] = { [Op.iLike]: `%${value}%` };
