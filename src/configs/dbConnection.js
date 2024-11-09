@@ -8,14 +8,14 @@ const HOST = process.env.HOST;
 const DB = process.env.DB;
 
 //? Local db connection
-const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
-  host: HOST,
-  dialect: DB,
-  logging: false, 
-});
+// const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
+//   host: HOST,
+//   dialect: DB,
+//   logging: false, 
+// });
 
 //? Live db connection
-// const sequelize = new Sequelize(`${DB}://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}.oregon-postgres.render.com/${DB_NAME}?ssl=true`)
+const sequelize = new Sequelize(`${DB}://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}.oregon-postgres.render.com/${DB_NAME}?ssl=true`)
 
 
 const dbConnection = async () => {
