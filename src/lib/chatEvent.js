@@ -3,7 +3,7 @@ const io = require('../configs/socketConfig');
 const activeUsers = new Map();
 
 io.on("connection", (socket) => {
-  console.log('---socket connected--- ' + socket.id);
+  // console.log('---socket connected--- ' + socket.id);
 
   socket.on('userConnected', (userId) => {
     activeUsers.set(socket.id, { userId });
@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
 
 
   socket.on('disconnect', () => {
-    console.log('---socket disconnected---' + socket.id);
+    // console.log('---socket disconnected---' + socket.id);
 
     activeUsers.delete(socket.id);
     emitActiveUsers();
