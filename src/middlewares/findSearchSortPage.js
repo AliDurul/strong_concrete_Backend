@@ -35,7 +35,7 @@ module.exports = (req, res, next) => {
 
   for (const key in search) {
     let value = search[key];
-    if (['model', 'DriverId', 'capacity', 'status', 'creatorId', 'role'].includes(key)) {
+    if (['model', 'DriverId', 'capacity', 'status', 'creatorId', 'role', 'FirmId'].includes(key)) {
       whereClause[key] = value;
     } else {
       whereClause[key] = { [Op.iLike]: `%${value}%` };
@@ -83,7 +83,7 @@ module.exports = (req, res, next) => {
   //?url den gelen her değer string bu nedenle bu değerleri numberlaştırmam gerekiyor.page de yapmadım -1 zaten onu numberlaştırdı.backende page herzaman -1 dir.
 
   limit = Number(req.query?.limit);
-  limit = limit > 0 ? limit : Number(process.env?.PAGE_SIZE || 100);
+  limit = limit > 0 ? limit : Number(process.env?.PAGE_SIZE || 20);
 
   page = (page > 0 ? page : 1) - 1;
 
@@ -91,6 +91,7 @@ module.exports = (req, res, next) => {
   offset = offset > 0 ? offset : page * limit;
 
   req.getModelList = async (Model, filters = {}, include = null) => {
+
     let paranoid = true;
 
     if (showDeleted === "true" && req.user.role === 5) paranoid = false;
@@ -115,12 +116,12 @@ module.exports = (req, res, next) => {
     if (showDeleted === "true" && req.user.role === 5) paranoid = false;
 
     const data = await Model.findAll({
-      where:
-        Object.keys(whereClause).length > 0 ? { [Op.or]: [whereClause] } : {},
+      where: Object.keys(whereClause).length > 0 ? { [Op.or]: [whereClause] } : {},
       include,
       order: orderClause,
       paranoid,
     });
+
     let details = {
       search,
       sort,
@@ -136,9 +137,11 @@ module.exports = (req, res, next) => {
       totalRecords: data.length,
       showDeleted: showDeleted === "true" && req.user.role === 5 ? true : false,
     };
-    details.pages.next =
-      details.pages.next > details.pages.total ? false : details.pages.next;
+
+    details.pages.next = details.pages.next > details.pages.total ? false : details.pages.next;
+
     if (details.totalRecords <= limit) details.pages = false;
+
     return details;
   };
 

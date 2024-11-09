@@ -32,10 +32,15 @@ const PurchaseAccount = sequelize.define(
 
       },
       beforeUpdate: async (purchaseAccount) => {
+
         const purchase = await Purchase.findByPk(purchaseAccount.PurchaseId);
+        const currentPurchaseAccount = await PurchaseAccount.findByPk(purchaseAccount.id);
+        
+        purchaseAccount.credit = Number(currentPurchaseAccount.credit) + Number(purchaseAccount.credit)
+
         purchaseAccount.FirmId = purchase.FirmId;
         purchaseAccount.debit = purchase.totalPrice;
-        purchaseAccount.balance = (purchaseAccount.debit - purchaseAccount.credit).toFixed(2);
+        purchaseAccount.balance = (Number(purchaseAccount.debit) - Number(purchaseAccount.credit)).toFixed(2);
       },
     },
   }

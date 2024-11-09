@@ -2,7 +2,7 @@ const { sequelize } = require("../configs/dbConnection");
 const { Op } = require("sequelize");
 const passwordEncrypt = require("./passEncrypt");
 
-const { User, Firm, Material, Purchase, Product, Vehicle, Sale, Production, Delivery, SaleAccount } = require('..//models');
+const { User, Firm, Material, Purchase, Product, Vehicle, Sale, Production, Delivery, SaleAccount, PurchaseAccount } = require('..//models');
 
 // common data and functions
 const productNames = ["C20", "C25", "C30", "C35", "C40", "C45", "C50", "C55"];
@@ -212,6 +212,7 @@ async function createMaterials() {
 
 async function createPurchases() {
     const purchasesData = [];
+    const purchaseAccountsData = [];
 
     const firms = await Firm.findAll({ where: { status: 2 } });
     const firmIds = firms.map(firm => firm.id);
@@ -256,15 +257,27 @@ async function createPurchases() {
     function addPurchases(materialQuantities, materialId, unitPriceRange) {
         materialQuantities.forEach(({ firmId, quantity }) => {
             const unitPrice = getRandomUnitPrice(unitPriceRange.min, unitPriceRange.max);
-            purchasesData.push({
+            const totalPrice = calculateTotalPrice(quantity, unitPrice);
+            const createdAt = getRandomDateIn2024();
+            const purchaseData = {
                 FirmId: firmId,
                 MaterialId: materialId,
                 quantity,
                 unitPrice,
-                totalPrice: calculateTotalPrice(quantity, unitPrice),
-                createdAt: getRandomDateIn2024(),
+                totalPrice,
+                createdAt,
                 creatorId: 1,
-            });
+            };
+            purchasesData.push(purchaseData);
+
+            const purchaseAccountData = {
+                debit: totalPrice,
+                balance: totalPrice,
+                FirmId: firmId,
+                creatorId: 1,
+                updaterId: null,
+            };
+            purchaseAccountsData.push(purchaseAccountData);
         });
     }
 
@@ -274,8 +287,17 @@ async function createPurchases() {
 
     const res = await Purchase.bulkCreate(purchasesData);
 
-    if (res) console.log('Purchases created successfully!');
-    else console.log('Something went wrong with Purchases creation!');
+    if (res) {
+        console.log('Purchases created successfully!');
+        res.forEach((purchase, index) => {
+            purchaseAccountsData[index].PurchaseId = purchase.id;
+        });
+        const accountRes = await PurchaseAccount.bulkCreate(purchaseAccountsData);
+        if (accountRes) console.log('Purchase accounts created successfully!');
+        else console.log('Something went wrong with Purchase accounts creation!');
+    } else {
+        console.log('Something went wrong with Purchases creation!');
+    }
 }
 
 async function createProducts() {
