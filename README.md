@@ -50,51 +50,33 @@
     <tr>
       <td colspan="3" style="padding: 10px; background-color: #ecf0f1;">
         <h3>🌟 What is this project about?</h3>
-        <p>
-          The Strong Concrete Backend is a comprehensive system designed for managing a concrete production and sales business.
-          It encompasses user management, vehicle tracking, firm management, product and material management, production tracking,
-          sales transactions, delivery records, and an in-app chat system. It also features a dashboard for statistics and charts.
-        </p>
-        <h2>⚙️ Features</h2>
-        <ul>
-          <li>User management (role-based access control)</li>
-          <li>Vehicle management (driver assignment and vehicle tracking)</li>
-          <li>Firm management (clients, addresses, and contacts)</li>
-          <li>Product and material management</li>
-          <li>Production tracking (production, delivery status updates)</li>
-          <li>Sales transactions (track sales progress)</li>
-          <li>Delivery records management</li>
-          <li>Chat functionality (in-app chat and message system)</li>
-          <li>Email Verification (email verification link sent after registration)</li>
-          <li>Password Recovery (Forgot Password and Reset Password)</li>
-        </ul>
+           <p>
+      The <strong>Strong Concrete Backend</strong> is a robust system designed to streamline operations for a concrete production and sales business. It supports multiple functionalities including user management, vehicle tracking, firm management, and an in-app chat system, all accessible through a dashboard with detailed statistics and charts.
+    </p>
+    <h2>⚙️ Features</h2>
+    <ul>
+        <li>👥 <strong>User Management:</strong> Role-based access control for tailored permissions.</li>
+        <li>🚛 <strong>Vehicle Management:</strong> Driver assignment and real-time vehicle tracking.</li>
+        <li>🏢 <strong>Firm Management:</strong> Manage clients, addresses, and contact information.</li>
+        <li>📦 <strong>Product & Material Management:</strong> Comprehensive inventory oversight.</li>
+        <li>📈 <strong>Production Tracking:</strong> Monitor production stages and delivery status updates.</li>
+        <li>💰 <strong>Sales Transactions:</strong> Track sales progress and performance.</li>
+        <li>📑 <strong>Delivery Records:</strong> Detailed logging of delivery activities.</li>
+        <li>💬 <strong>Chat System:</strong> In-app chat functionality for seamless communication.</li>
+        <li>✉️ <strong>Email Verification:</strong> Secure account verification post-registration.</li>
+        <li>🔐 <strong>Password Recovery:</strong> Forgot Password and Reset Password support.</li>
+    </ul>
+    <h2>📄 API Documentation</h2>
+    <ul>
+        <li>📘 <a href="https://strong-concrete-backend-220e.onrender.com/documents/swagger/" target="_blank">Swagger Documentation</a></li>
+        <li>📙 <a href="https://strong-concrete-backend-220e.onrender.com/documents/redoc/" target="_blank">Redoc Documentation</a></li>
+        <li>📄 <a href="https://strong-concrete-backend-220e.onrender.com/documents/json" target="_blank">JSON Schema</a></li>
+    </ul>
+         <h2>💬 Feedback and Collaboration</h2>
+          <p> I highly value your feedback and suggestions! If you have any questions, comments, or ideas for improvement,
+          feel free to reach out. I am always open to collaborating on new and exciting projects. </p>
+          <p> Thank you for visiting my project. I hope you enjoy exploring it, and I look forward to connecting with you! </p>
       </td>
     </tr>
   </tbody>
 </table>
-
-<div id="user-content-toc" align="center">
-  <ul align="left">
-    <summary><h2 style="color: #2c3e50;">📄 API Documentation</h2></summary>
-  </ul>
-</div>
-
-<ul>
-  <li><a href="https://strong-concrete-backend-220e.onrender.com/documents/swagger/" target="_blank">Swagger Documentation</a></li>
-  <li><a href="https://strong-concrete-backend-220e.onrender.com/documents/redoc/" target="_blank">Redoc Documentation</a></li>
-  <li><a href="https://strong-concrete-backend-220e.onrender.com/documents/json" target="_blank">JSON Schema</a></li>
-</ul>
-
-<div id="user-content-toc" align="center">
-  <ul align="left">
-    <summary><h2 style="color: #2c3e50;">💬 Feedback and Collaboration</h2></summary>
-  </ul>
-</div>
-
-<p>
-  I highly value your feedback and suggestions! If you have any questions, comments, or ideas for improvement,
-  feel free to reach out. I am always open to collaborating on new and exciting projects.
-</p>
-<p>
-  Thank you for visiting my project. I hope you enjoy exploring it, and I look forward to connecting with you!
-</p>
