@@ -483,15 +483,32 @@ async function createSales() {
 
 
 module.exports = async function createDatabases() {
+    try {
+        console.log("Starting database creation...");
 
+        await createUsers();
+        console.log("Users created successfully!");
 
-    // await createUsers()
-    // await createFirms()
-    // await createMaterials()
-    // await createPurchases()
-    // await createProducts()
-    // await createVehicles()
-    // await createSales()
+        await createFirms();
+        console.log("Firms created successfully!");
 
-}
+        await createMaterials();
+        console.log("Materials created successfully!");
 
+        await createPurchases();
+        console.log("Purchases created successfully!");
+
+        await createProducts();
+        console.log("Products created successfully!");
+
+        await createVehicles();
+        console.log("Vehicles created successfully!");
+
+        await createSales();
+        console.log("Sales created successfully!");
+
+        console.log("Database creation completed successfully!");
+    } catch (error) {
+        console.error("An error occurred during database creation:", error);
+    }
+};
