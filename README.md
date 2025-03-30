@@ -76,6 +76,10 @@
           <p> I highly value your feedback and suggestions! If you have any questions, comments, or ideas for improvement,
           feel free to reach out. I am always open to collaborating on new and exciting projects. </p>
           <p> Thank you for visiting my project. I hope you enjoy exploring it, and I look forward to connecting with you! </p>
+         <h2>💠 ERD</h2>
+         <div align="center">
+          <img src="./ERD.png" alt="ERD Diagram" style="max-width: 100%; height: auto;">
+        </div>
       </td>
     </tr>
   </tbody>
